@@ -168,7 +168,11 @@ export function SiteHeader() {
           <Link className="button button--small button--outline header-plan hidden md:inline-flex" href="/register">
             Plan a Trip
           </Link>
-          <Link className="button button--small button--red header-contact hidden md:inline-flex" href="/register">
+          <Link
+            className="button button--small button--red header-contact hidden md:inline-flex"
+            href="/#contact"
+            onClick={() => handleNavClick("/#contact")}
+          >
             Get in Touch
           </Link>
           <button
@@ -265,8 +269,8 @@ export function SiteHeader() {
               </Link>
               <Link
                 className="button button--outline mobile-cta-secondary"
-                href="/register"
-                onClick={closeMenus}
+                href="/#contact"
+                onClick={() => handleNavClick("/#contact")}
               >
                 Get in Touch
               </Link>

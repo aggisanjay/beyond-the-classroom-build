@@ -17,7 +17,9 @@ import {
   ShieldCheck,
   Star,
   Sparkles,
+  CheckCircle2,
 } from "lucide-react"
+import { RegistrationForm } from "@/components/forms/registration-form"
 import { Reveal } from "@/components/site/motion-reveal"
 import { destinations } from "@/lib/trips/data"
 
@@ -381,6 +383,103 @@ export function WhySchoolsChooseUs() {
   return null
 }
 
+// Section H — Get in Touch / Teacher Enquiry Section
 export function TeacherCta() {
-  return null
+  return (
+    <section className="section landing-contact-section" id="contact" aria-labelledby="contact-title">
+      <span id="get-in-touch" className="sr-only">Get in Touch</span>
+      <div className="section-shell">
+        <div className="landing-contact-header">
+          <Reveal direction="up">
+            <p className="eyebrow"><span className="eyebrow__line" /> GET IN TOUCH / START A CONVERSATION</p>
+            <h2 id="contact-title" className="landing-contact-title">
+              Your Students&apos; Next Great Lesson Starts Here.
+            </h2>
+            <p className="landing-contact-subtitle">
+              Tell us about your school, student cohort, and the educational journey you have in mind. We&apos;ll help design a meaningful, safe, and curriculum-aligned experience.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="landing-contact-card">
+          {/* Left Column: Visual Media & Advisory Highlights */}
+          <Reveal direction="left" className="landing-contact-left">
+            <div className="landing-contact-media" aria-hidden="true">
+              <Image
+                src="/images/kyoto-pagoda-sunset.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 900px) 100vw, 45vw"
+                className="landing-contact-bg-img"
+              />
+              <div className="landing-contact-overlay" />
+            </div>
+
+            <div className="landing-contact-left-content">
+              <div className="landing-contact-pill">
+                <Sparkles size={14} className="landing-contact-pill-icon" aria-hidden="true" />
+                <span>SCHOOL &amp; TEACHER INQUIRY</span>
+              </div>
+
+              <h3>Plan with Confidence &amp; Full Support</h3>
+              <p className="landing-contact-desc">
+                Every journey is curated with academic rigor, logistical excellence, and the highest standards of student safety.
+              </p>
+
+              <div className="landing-contact-benefits">
+                <div className="landing-benefit-row">
+                  <div className="landing-benefit-icon">
+                    <GraduationCap size={18} aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong>Curriculum-Aligned Learning</strong>
+                    <span>Tailored for STEM, Heritage &amp; Culture, and Global Higher Education exposure.</span>
+                  </div>
+                </div>
+
+                <div className="landing-benefit-row">
+                  <div className="landing-benefit-icon">
+                    <ShieldCheck size={18} aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong>24/7 Safety &amp; On-Ground Support</strong>
+                    <span>Comprehensive risk assessments, vetted local partners &amp; dedicated coordinators.</span>
+                  </div>
+                </div>
+
+                <div className="landing-benefit-row">
+                  <div className="landing-benefit-icon">
+                    <CheckCircle2 size={18} aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong>Zero-Commitment Consultation</strong>
+                    <span>Submitting interest records an initial inquiry only; no booking or payment required.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="landing-contact-note">
+                <span className="landing-contact-dot" aria-hidden="true" />
+                <span>Our educational travel team responds within 1 business day.</span>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Right Column: Embedded Registration Form */}
+          <Reveal direction="right" className="landing-contact-right">
+            <div className="landing-contact-form-wrapper">
+              <div className="landing-form-header">
+                <h3>Submit School Interest</h3>
+                <p>Fill out the details below to receive a customized proposed itinerary.</p>
+              </div>
+              <RegistrationForm />
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
 }
+
+// Alias export for clarity
+export { TeacherCta as GetInTouchSection }

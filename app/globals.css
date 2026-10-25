@@ -5564,6 +5564,215 @@ img {
 }
 
 /* --------------------------------------------------------------------------
+   LANDING PAGE — GET IN TOUCH / TEACHER CTA SECTION
+   -------------------------------------------------------------------------- */
+.landing-contact-section {
+  padding: 85px 0 110px;
+  background: #0B0D0E;
+  position: relative;
+}
+
+.landing-contact-header {
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+
+.landing-contact-title {
+  margin: 12px 0 16px;
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.landing-contact-subtitle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #B0B4B5;
+}
+
+.landing-contact-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  background: #141719;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+.landing-contact-left {
+  position: relative;
+  min-height: 540px;
+  padding: 44px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.landing-contact-media {
+  position: absolute;
+  inset: 0;
+}
+
+.landing-contact-bg-img {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.landing-contact-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 13, 14, 0.72) 0%, rgba(11, 13, 14, 0.95) 85%);
+}
+
+.landing-contact-left-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.landing-contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(241, 43, 53, 0.16);
+  border: 1px solid rgba(241, 43, 53, 0.32);
+  color: #FF5A62;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.landing-contact-pill-icon {
+  color: #F12B35;
+}
+
+.landing-contact-left-content h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+}
+
+.landing-contact-desc {
+  margin: 0 0 26px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #B0B4B5;
+}
+
+.landing-contact-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.landing-benefit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.landing-benefit-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F12B35;
+  flex-shrink: 0;
+}
+
+.landing-benefit-row strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 2px;
+}
+
+.landing-benefit-row span {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #8D9292;
+}
+
+.landing-contact-note {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+  color: #8D9292;
+}
+
+.landing-contact-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 8px #22C55E;
+}
+
+.landing-contact-right {
+  padding: 36px 38px;
+  background: #111415;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.landing-contact-form-wrapper {
+  width: 100%;
+}
+
+.landing-form-header {
+  margin-bottom: 18px;
+}
+
+.landing-form-header h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.landing-form-header p {
+  margin: 0;
+  font-size: 12px;
+  color: #8D9292;
+}
+
+@media (max-width: 900px) {
+  .landing-contact-card {
+    grid-template-columns: 1fr;
+  }
+  .landing-contact-left {
+    min-height: auto;
+    padding: 32px 24px;
+  }
+  .landing-contact-right {
+    padding: 32px 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
    FOOTER (Panel 2)
    -------------------------------------------------------------------------- */
 .site-footer {

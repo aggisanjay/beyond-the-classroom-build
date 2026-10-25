@@ -95,6 +95,7 @@ export function SiteFooter() {
             <Link href="/#why-travel">Why Educational Travel</Link>
             <Link href="/#how-it-works">How It Works</Link>
             <Link href="/#trust">Trust & Safety</Link>
+            <Link href="/#contact">Get in Touch</Link>
             <Link href="/register">Plan a Trip</Link>
           </div>
 
