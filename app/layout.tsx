@@ -13,6 +13,13 @@ export const metadata: Metadata = {
   generator: "Next.js",
   referrer: "strict-origin-when-cross-origin",
   robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 }
 
 export const viewport: Viewport = {
