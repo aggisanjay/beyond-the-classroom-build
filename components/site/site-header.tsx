@@ -142,7 +142,7 @@ export function SiteHeader() {
       <div className="site-header__inner">
         <BrandMark />
 
-        <nav className="site-nav" aria-label="Main navigation">
+        <nav className="site-nav hidden md:flex" aria-label="Main navigation">
           {navItems.map((item) => (
             <Link key={item.label} href={item.href} onClick={() => handleNavClick(item.href)}>
               {item.label}
@@ -165,16 +165,16 @@ export function SiteHeader() {
           >
             {searchOpen ? <X size={20} aria-hidden="true" /> : <Search size={20} aria-hidden="true" />}
           </button>
-          <Link className="button button--small button--outline header-plan" href="/register">
+          <Link className="button button--small button--outline header-plan hidden md:inline-flex" href="/register">
             Plan a Trip
           </Link>
-          <Link className="button button--small button--red header-contact" href="/register">
+          <Link className="button button--small button--red header-contact hidden md:inline-flex" href="/register">
             Get in Touch
           </Link>
           <button
             ref={toggleBtnRef}
             type="button"
-            className={`icon-button mobile-menu-toggle${menuOpen ? " is-active" : ""}`}
+            className={`icon-button mobile-menu-toggle inline-flex md:hidden${menuOpen ? " is-active" : ""}`}
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"

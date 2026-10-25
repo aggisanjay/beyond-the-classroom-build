@@ -15,18 +15,17 @@ const destinationTaglines: Record<string, string> = {
 
 export function HomeHero() {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
   const touchStart = useRef<number | null>(null)
   const reduceMotion = useReducedMotion()
   const activeTrip = destinations[activeIndex]
 
   useEffect(() => {
-    if (paused || reduceMotion) return
+    if (reduceMotion) return
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % destinations.length)
-    }, 2000)
+    }, 3000)
     return () => window.clearInterval(timer)
-  }, [paused, reduceMotion])
+  }, [reduceMotion])
 
   const showPrevious = () => {
     setActiveIndex((current) => (current - 1 + destinations.length) % destinations.length)
@@ -41,12 +40,6 @@ export function HomeHero() {
       id="home-hero"
       aria-roledescription="carousel"
       aria-label="Featured school trip destinations"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setPaused(false)
-      }}
       onKeyDown={(event) => {
         if (event.key === "ArrowLeft") showPrevious()
         if (event.key === "ArrowRight") showNext()
@@ -72,7 +65,7 @@ export function HomeHero() {
             initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.85, ease: "easeInOut" }}
+            transition={{ duration: reduceMotion ? 0 : 0.6, ease: "easeInOut" }}
           >
             <Image
               src={activeTrip.heroImage}
