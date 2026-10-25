@@ -52,7 +52,7 @@ const trustValues = [
 
 export function TrustStrip() {
   return (
-    <section className="value-strip" aria-label="Our core principles">
+    <section className="value-strip" id="trust" aria-label="Our core principles">
       <div className="section-shell">
         <div className="value-strip__grid">
           {trustValues.map(({ icon: Icon, title, subtitle }, index) => (
@@ -211,7 +211,8 @@ export function FeaturedDestinations() {
 // Section E — Why Educational Travel Matters (Panel 2 in reference image)
 export function LearningStory() {
   return (
-    <section className="section story-banner-section" id="about">
+    <section className="section story-banner-section" id="why-travel">
+      <span id="about" className="sr-only" />
       <div className="story-banner-container">
         {/* Full width scenic backdrop */}
         <div className="story-banner-bg" aria-hidden="true">

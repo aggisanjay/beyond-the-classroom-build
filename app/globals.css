@@ -4907,7 +4907,7 @@ img {
    FEATURED DESTINATIONS (Section D)
    -------------------------------------------------------------------------- */
 .destinations-section {
-  padding: 85px 0 95px;
+  padding: 85px 0 52px;
   background: #0B0D0E;
 }
 
@@ -5131,7 +5131,7 @@ img {
    -------------------------------------------------------------------------- */
 .story-banner-section {
   position: relative;
-  padding: 100px 0;
+  padding: 36px 0 65px;
   background: #0B0D0E;
 }
 

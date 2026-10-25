@@ -91,11 +91,11 @@ export function SiteFooter() {
           {/* Quick Links */}
           <div className="site-footer__links-col">
             <span className="footer-col-title">QUICK LINKS</span>
-            <Link href="/#school-trips">School Trips</Link>
-            <Link href="/#why-us">Why Us</Link>
-            <Link href="/#how-it-works">For Schools</Link>
+            <Link href="/#destinations">Destinations</Link>
+            <Link href="/#why-travel">Why Educational Travel</Link>
+            <Link href="/#how-it-works">How It Works</Link>
+            <Link href="/#trust">Trust & Safety</Link>
             <Link href="/register">Plan a Trip</Link>
-            <Link href="/#about">About</Link>
           </div>
 
           {/* Support */}

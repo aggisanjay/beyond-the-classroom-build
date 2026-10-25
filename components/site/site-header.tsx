@@ -9,10 +9,9 @@ import { destinations } from "@/lib/trips/data"
 
 const navItems = [
   { label: "Destinations", href: "/#destinations" },
-  { label: "School trips", href: "/#school-trips" },
-  { label: "Why us", href: "/#why-us" },
-  { label: "For schools", href: "/#how-it-works" },
-  { label: "Our approach", href: "/#about" },
+  { label: "Why Educational Travel", href: "/#why-travel" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Trust & Safety", href: "/#trust" },
 ]
 
 export function SiteHeader() {
