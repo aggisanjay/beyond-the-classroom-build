@@ -1,0 +1,780 @@
+# MASTER BUILD PROMPT — BEYOND THE CLASSROOM
+## Premium School Trip Discovery & Interest Management Platform
+
+Act as a senior product designer, creative frontend engineer, backend engineer, Supabase specialist, accessibility expert, and security-focused full-stack developer.
+
+Build a complete, production-minded School Trip Interest application that meets every requirement in the assignment below. The application must be fully functional, visually impressive, responsive, secure, and deployable on Vercel.
+
+Do not deliver only a landing page, static prototype, UI mockup, or partial implementation. Implement the complete application, verify it, and document anything that genuinely remains unfinished.
+
+# 1. REQUIRED TECHNOLOGY STACK
+
+Use the following stack:
+
+- Next.js App Router
+- React
+- JavaScript (prefer JavaScript rather than TypeScript unless the existing repository requires TypeScript)
+- Tailwind CSS
+- Framer Motion / Motion for React
+- Supabase PostgreSQL database
+- Supabase Auth using email login
+- Supabase Row Level Security (RLS)
+- React Hook Form and Zod for validation, if compatible with the project
+- Lucide React icons
+- Vercel deployment
+- ESLint and the project's existing build tooling
+
+Use Server Components by default. Use Client Components only for interactive UI, animations, forms, and browser-dependent functionality.
+
+Use environment variables for all credentials. Never expose a Supabase service-role key, private API key, or secret in client-side code.
+
+Inspect the existing repository before making changes. Reuse working code and existing conventions where reasonable. Do not destroy working functionality unnecessarily.
+
+# 2. PRODUCT CONCEPT AND BRAND
+
+Product name: Beyond the Classroom
+
+Tagline: Learning Has No Borders.
+
+Purpose:
+Help teachers discover thoughtfully curated educational trips, explore meaningful itineraries, and register their school's interest. Give authorized administrators a secure dashboard to manage actual teacher enquiries.
+
+The experience should feel like a premium international educational travel brand, not a school management template or generic SaaS dashboard.
+
+Reference design:
+Study the supplied Visit Japan screenshots and the additional generated design reference. Use them for inspiration in photography, composition, typography, cinematic hero layouts, destination cards, editorial content, dark surfaces, and sophisticated motion.
+
+Do not copy the original website's branding or reproduce it pixel-for-pixel. Create an original visual identity for Beyond the Classroom.
+
+# 3. VISUAL DESIGN SYSTEM
+
+## Overall aesthetic
+
+Create a cinematic, premium, editorial travel website with:
+
+- Deep charcoal and near-black backgrounds
+- Warm white text on dark surfaces
+- Muted gray secondary text
+- Bold red accents for calls to action
+- Subtle borders and elegant separators
+- Large destination photography
+- Asymmetric image compositions
+- Oversized editorial headlines
+- Spacious layouts and intentional negative space
+- Beautifully layered destination cards
+- Sophisticated hover states
+- Subtle gradients and image overlays for legibility
+- Consistent spacing, radii, shadows, and typography
+
+Suggested palette:
+- Background: #0B0D0E
+- Secondary surface: #141719
+- Elevated surface: #1B2022
+- Primary text: #F5F3EF
+- Secondary text: #B0B4B5
+- Accent red: #F12B35
+- Subtle border: #303537
+
+Use a strong modern sans-serif such as Manrope, Inter, or Geist. Use an editorial display style for hero headings and occasional serif typography for storytelling if it improves the design.
+
+Do not use white text on white backgrounds. Maintain readable contrast on all image overlays, cards, forms, and dashboards.
+
+Use design tokens instead of inconsistent one-off styling.
+
+## Responsive requirements
+
+Design for:
+- Desktop: 1440px and larger
+- Laptop: 1024–1439px
+- Tablet: 768–1023px
+- Mobile: 320–767px
+
+The design must be genuinely responsive. On mobile, replace crowded desktop navigation with a functional menu, stack destination cards appropriately, preserve readable text, and ensure forms remain easy to complete.
+
+# 4. PUBLIC LANDING PAGE
+
+Implement a complete homepage at `/`.
+
+## Section A — Navigation
+
+Build a premium sticky or fixed navigation bar with:
+
+- Original brand logo and wordmark
+- Destinations
+- School Trips
+- Why Us
+- For Schools
+- About
+- Search or destination discovery interaction
+- "Plan a Trip" CTA
+- "Get in Touch" CTA
+
+Navigation items must link to real page sections or actual implemented routes. Do not create dead buttons or fake search controls.
+
+Use a transparent or darkened navigation surface over the hero and a refined background treatment after scrolling.
+
+## Section B — Cinematic hero
+
+This is the most important visual section.
+
+Create a full-width, approximately 75–90vh hero with an immersive photographic composition.
+
+Main headline:
+"LEARNING HAS NO BORDERS"
+
+Supporting copy:
+"Curated educational journeys that bring learning to life through innovation, culture, and global discovery."
+
+Primary CTA: "Explore School Trips"
+
+Secondary CTA: "Plan Your School Journey"
+
+The hero must showcase the three destinations:
+1. Singapore
+2. Jaipur
+3. London
+
+### Automatic destination carousel
+
+Create an automatically advancing carousel that changes destination every 2 seconds, as requested.
+
+Each slide must have:
+- A distinct, high-quality destination image
+- Destination name and short educational theme
+- Large, cinematic typography
+- Subtle image movement
+- Gradient overlay for text contrast
+- Slide progress indicators
+- Previous and next controls
+- An actionable destination CTA
+
+Transitions should feel smooth, premium, and intentional. Avoid jarring flashes, layout shifts, and excessive motion.
+
+Pause automatic advancement when the user hovers over the carousel or focuses its controls. Support manual navigation and touch swipes. Stop or reduce motion when the user prefers reduced motion.
+
+Use actual slide state. Do not implement a fake carousel that only changes text.
+
+## Section C — Trust and value strip
+
+Display five compact value propositions:
+
+- Curated Educational Itineraries
+- Real-World Learning
+- Student Safety and Support
+- Global Perspectives
+- Teacher-Friendly Planning
+
+Use Lucide icons, subtle separators, and small entrance animations.
+
+Do not claim certifications, school partnerships, safety guarantees, or customer statistics that have not been verified.
+
+## Section D — Featured destinations
+
+Section eyebrow: "POPULAR DESTINATIONS"
+
+Headline: "Field Trips. Real-World Discovery."
+
+Show three visually rich destination cards for Singapore, Jaipur, and London.
+
+Each card must include:
+- Destination photography
+- Destination name
+- Educational theme
+- Short description
+- Estimated itinerary duration, clearly identified as a proposed itinerary
+- Relevant learning outcomes
+- "Explore Journey" CTA
+- Subtle image zoom and hover interaction
+
+Use three distinct destination visual identities while retaining the shared brand design system.
+
+Clicking a card must open its corresponding destination detail page.
+
+## Section E — Learning beyond textbooks
+
+Create a visually rich storytelling section explaining why educational travel matters.
+
+Include:
+- Practical STEM learning
+- Historical and cultural understanding
+- University and career exposure
+- Collaboration and independent thinking
+- Global awareness
+
+Use a two-column layout with large imagery, short editorial copy, and alternating content alignment.
+
+Reveal the text and images with restrained scroll-triggered animations.
+
+## Section F — How school trips work
+
+Present a clear three-step process:
+
+1. Discover a destination.
+2. Submit your school's interest.
+3. Discuss itinerary requirements and next steps.
+
+Use animated numbered markers, a connecting line, and staggered reveals.
+
+Make clear that submitting interest is an enquiry, not a confirmed reservation.
+
+## Section G — Why schools choose us
+
+Create a premium visual feature grid with:
+- Structured educational itineraries
+- Clear learning objectives
+- Age-appropriate activities
+- Teacher-oriented planning
+- Flexible group requirements
+- Cultural and academic experiences
+
+Use real content and tasteful illustrations or icons. Do not fabricate testimonials or customer statistics.
+
+## Section H — Teacher enquiry CTA
+
+Create a prominent, visually distinct section encouraging teachers to register interest.
+
+Headline:
+"Your Students' Next Great Lesson Starts Here."
+
+Supporting copy:
+"Tell us about your school and the journey you have in mind."
+
+CTA: "Register School Interest"
+
+The button should smoothly scroll to the registration form or navigate to `/register`.
+
+## Section I — Footer
+
+Include:
+- Brand identity
+- Destination links
+- Registration link
+- Contact information only if real information is supplied
+- Privacy policy
+- Appropriate copyright notice
+
+Do not invent a physical address, phone number, company registration, or business email.
+
+# 5. DESTINATION DETAIL PAGES
+
+Implement three individual routes:
+
+- `/trips/singapore-stem`
+- `/trips/jaipur-heritage`
+- `/trips/london-universities`
+
+Each page must feel like a complete editorial travel experience rather than a copied card layout.
+
+Create reusable destination page components driven by a well-structured destination configuration.
+
+Each destination page must contain:
+
+1. Immersive destination hero.
+2. Destination introduction.
+3. Educational objectives.
+4. Six to seven distinct itinerary stops.
+5. A day-by-day itinerary.
+6. A destination image gallery.
+7. Learning outcomes.
+8. Suitable student age range, clearly labeled as a suggested range.
+9. Proposed duration and a transparent note that timing is illustrative.
+10. Teacher planning considerations.
+11. Prominent registration CTA.
+12. Related destination links.
+13. Footer and breadcrumbs.
+
+Use original copy tailored to each destination.
+
+## Destination A — Singapore STEM Expedition
+
+Suggested duration: 3 days.
+
+Build an educational itinerary with seven stops:
+
+Day 1:
+1. Science Centre Singapore — science demonstrations and hands-on exhibits.
+2. Gardens by the Bay — sustainability, urban ecology, and environmental engineering.
+3. Marina Bay waterfront — city infrastructure and urban planning.
+
+Day 2:
+4. ArtScience Museum — intersections of science, technology, and art.
+5. National University of Singapore campus area — university discovery, subject to visitor access.
+6. Singapore Discovery Centre or another appropriate innovation-focused learning venue.
+
+Day 3:
+7. Jewel Changi Airport — architecture, indoor ecosystems, and engineering.
+
+Clearly distinguish suggested visits from confirmed bookings. Research current access restrictions and school-group policies before presenting venue-specific operational claims.
+
+## Destination B — Jaipur Heritage Journey
+
+Suggested duration: 3 days.
+
+Build an itinerary with seven stops:
+
+Day 1:
+1. Hawa Mahal — architecture and historical urban life.
+2. City Palace — royal history, art, and collections.
+3. Jantar Mantar — astronomical instruments and scientific history.
+
+Day 2:
+4. Amber Fort — architecture, engineering, and historical context.
+5. Panna Meena ka Kund — stepwell design and water management.
+6. Local craft or block-printing workshop — traditional skills and material culture, subject to availability.
+
+Day 3:
+7. Albert Hall Museum — art, history, and cultural collections.
+
+Present heritage respectfully and accurately. Explain the educational value of each stop.
+
+## Destination C — London University Discovery
+
+Suggested duration: 3 days.
+
+Build an itinerary with seven stops:
+
+Day 1:
+1. British Museum — history, archaeology, and global cultural heritage.
+2. South Kensington museums area — scientific collections and discovery.
+3. Imperial College London campus area — STEM and research exposure, subject to visitor access.
+
+Day 2:
+4. University College London campus area — higher education and academic pathways.
+5. King's College London campus area — university life and subject exploration.
+6. Science Museum — engineering, scientific discoveries, and technology.
+
+Day 3:
+7. Tower Bridge and the surrounding Thames area — engineering, infrastructure, and urban history.
+
+University visits must be described as campus-area exploration unless an official university visit is confirmed. Never promise access to restricted buildings, admissions sessions, or meetings with students.
+
+For all destinations, use the same reusable itinerary component while allowing different layouts, photographs, descriptions, and learning objectives.
+
+# 6. PHOTOGRAPHY AND IMAGE ASSETS
+
+Create a curated image library for the three destinations.
+
+Target approximately 6 distinct images per destination, for a total of 18 destination images.
+
+Suggested asset structure:
+
+`public/images/trips/singapore/`
+`public/images/trips/jaipur/`
+`public/images/trips/london/`
+
+For each destination, provide:
+1. Hero image.
+2. Landmark image.
+3. Educational venue image.
+4. Cultural or experiential image.
+5. Architecture or cityscape image.
+6. Gallery image.
+
+Use high-quality, properly licensed photographs from a dependable image source or generate suitable original image assets where appropriate.
+
+For remote photography, use stable image URLs and configure any required Next.js image settings. Prefer downloading and storing licensed assets locally when permitted.
+
+Do not depend on unstable placeholder image services, random image endpoints, or broken URLs.
+
+Do not reuse the same image for every itinerary stop. Each image must match the actual destination or activity being described.
+
+Use optimized image loading, descriptive alt text, correct aspect ratios, responsive image sizes, and a sensible loading priority for the hero.
+
+Include a README explaining image sources and licenses.
+
+# 7. FRAMER MOTION AND SCROLL INTERACTIONS
+
+Use Framer Motion / Motion for React throughout the public experience.
+
+Create a coherent animation system with reusable variants rather than writing unrelated animations for every component.
+
+Required animations:
+
+- Hero headline staggered entrance.
+- Hero image fade and subtle scale.
+- Smooth automatic carousel transitions.
+- Destination image reveal.
+- Left-to-right and right-to-left content reveals.
+- Bottom-to-top section reveals.
+- Staggered destination card entrance.
+- Itinerary timeline progression.
+- Image gallery transitions.
+- CTA hover and press states.
+- Navigation interaction.
+- Smooth anchor scrolling.
+- Form success and error transitions.
+- Mobile navigation entrance and exit.
+- Subtle parallax only where it improves the experience.
+
+Use viewport-aware triggers so sections animate as they enter view.
+
+Ensure scroll animations do not replay aggressively or make users wait for content to become readable.
+
+Use transform and opacity animations where possible to avoid layout shifts and excessive rendering work.
+
+Honor `prefers-reduced-motion`. Make all content accessible without animation.
+
+Do not add animation simply for the sake of animation. Every motion effect should support hierarchy, storytelling, or feedback.
+
+# 8. REGISTRATION FORM
+
+Implement a functional public registration experience at `/register` and optionally embed the same reusable form on the homepage.
+
+Required fields:
+- Teacher name
+- School name
+- Email
+- Phone
+- Selected trip
+- Number of students
+
+The trip selector must offer exactly these three supported trips:
+- Singapore STEM Expedition
+- Jaipur Heritage Journey
+- London University Discovery
+
+Form requirements:
+
+- Required field validation.
+- Proper email validation.
+- Phone input validation that supports international formats.
+- Student count must be a positive integer.
+- Sensible upper limit for student count to reject invalid values.
+- Accessible labels and error messages.
+- Clear loading, success, and failure states.
+- Duplicate submission protection while a request is pending.
+- Server-side validation even if client validation exists.
+- Preserve entered values when a submission fails where appropriate.
+- Keyboard navigation and mobile usability.
+
+On submission, save the actual form data to Supabase PostgreSQL.
+
+Show a success confirmation only after the database confirms the insert.
+
+If the submission fails, show a useful error message and do not pretend the registration succeeded.
+
+Display a concise privacy notice explaining that submitted details are used to respond to the school's trip enquiry.
+
+Do not add fabricated submissions, pre-filled fake teacher identities, or mock success states.
+
+# 9. SUPABASE DATABASE
+
+Create a documented SQL migration for a `trip_interests` table.
+
+Recommended fields:
+
+- `id`: UUID primary key
+- `teacher_name`: text, required
+- `school_name`: text, required
+- `email`: text, required
+- `phone`: text, required
+- `trip_slug`: text, constrained to the three valid destination slugs
+- `student_count`: integer, constrained to a sensible positive range
+- `created_at`: timestamp with time zone, defaulting to the current timestamp
+
+Add appropriate constraints, indexes, and a database migration file.
+
+Use a consistent naming convention and avoid unnecessary personally identifiable information.
+
+The database must not be populated with fake teacher enquiries. The three destination descriptions and itineraries can be legitimate application configuration, not fake database records.
+
+## Security and Row Level Security
+
+Enable RLS.
+
+The required security model is:
+
+- Anonymous visitors may submit a valid enquiry through a controlled server-side endpoint.
+- Anonymous visitors must not have unrestricted SELECT, UPDATE, or DELETE access to enquiries.
+- Only authenticated, authorized administrators may view enquiry records.
+- Only explicitly authorized administrators may perform any administrative mutations.
+- Do not treat every authenticated user as an administrator.
+- Restrict access using a trusted administrator allowlist or a properly secured administrator-role mechanism.
+- Never trust an email, role, or administrator flag supplied by the browser.
+
+Use a secure server-side database access pattern with validation and appropriate rate limiting or abuse protection.
+
+If using a Supabase service-role key, keep it strictly on the server, never expose it in a Client Component, and perform explicit authorization checks before administrative operations.
+
+Document how to apply the SQL migration and configure the required policies.
+
+# 10. ADMIN AUTHENTICATION
+
+Implement a real admin login at `/admin/login`.
+
+Use Supabase Auth email and password authentication. Support Supabase's documented email confirmation and password recovery flows where configured.
+
+Do not hardcode fake users or passwords.
+
+Configure a trusted administrator allowlist using server-side environment configuration or an appropriately protected database-backed role mechanism.
+
+Required behavior:
+
+- An unauthenticated visitor opening `/admin` is redirected to `/admin/login`.
+- A valid authenticated but unauthorized user is denied access.
+- Only authorized administrators can read enquiry records.
+- Server-side routes independently verify the session and administrator privileges.
+- Logout invalidates the user's application session correctly.
+- Session handling follows current Supabase SSR recommendations.
+- Protect against unauthorized direct requests to admin endpoints.
+- Do not rely on hiding UI elements as a security measure.
+
+Use the supported `@supabase/ssr` approach for server/client session handling where appropriate. Use the current Next.js conventions for request interception and routing.
+
+Provide clear setup instructions for creating the first authorized administrator.
+
+# 11. ADMIN DASHBOARD
+
+Implement `/admin` as a polished, responsive administration dashboard.
+
+Visual style:
+- Dark, premium interface.
+- Clear typography.
+- Compact, professional data tables.
+- Subtle borders.
+- Consistent spacing.
+- Strong information hierarchy.
+- Accessible contrast.
+
+The dashboard must use real Supabase data, not a static array of sample enquiries.
+
+## Dashboard summary
+
+Show:
+- Total enquiries.
+- Total students across all enquiries.
+- Enquiries per trip.
+- Students per trip.
+- Recent enquiries.
+
+Calculate totals from authorized database results. Handle empty datasets correctly.
+
+## Enquiry table
+
+Include:
+- Teacher name.
+- School.
+- Email.
+- Phone.
+- Selected trip.
+- Number of students.
+- Submission date.
+
+Provide:
+- Search by teacher, school, or email.
+- Filter by destination.
+- Sortable columns where practical.
+- Pagination for larger datasets.
+- Loading, error, and empty states.
+- Responsive table behavior on mobile.
+- Refresh or revalidation behavior to retrieve new submissions.
+
+## Trip analytics
+
+Show an accurate breakdown of each trip:
+
+- Singapore: enquiry count and total interested students.
+- Jaipur: enquiry count and total interested students.
+- London: enquiry count and total interested students.
+
+Use real aggregation based on saved records. A simple chart or visual comparison is welcome, but accurate totals are mandatory.
+
+Never display invented numbers or example enquiries as if they came from the database.
+
+# 12. API AND APPLICATION ARCHITECTURE
+
+Use clear separation of concerns.
+
+Suggested structure:
+
+- `app/` — public pages, destination routes, login, and admin routes.
+- `components/` — reusable navigation, hero, cards, itinerary, forms, and animations.
+- `lib/supabase/` — browser and server Supabase clients.
+- `lib/validation/` — shared validation schemas.
+- `lib/trips/` — destination configuration and itinerary data.
+- `app/api/trip-interests/route.js` — validated enquiry submission endpoint, or another secure equivalent.
+- `app/api/admin/` — protected administrative endpoints if needed.
+- `supabase/migrations/` — SQL schema, constraints, and RLS policies.
+- `public/images/trips/` — organized destination assets.
+- `.env.example` — environment variable names only.
+- `README.md` — setup, implementation, testing, deployment, and AI usage documentation.
+
+Adapt this structure to the repository's conventions.
+
+Avoid unnecessary abstraction, duplicated validation, giant page components, and client-side fetching where server rendering is more appropriate.
+
+Use server-side authorization for all protected data operations.
+
+# 13. REAL-TIME DATA AND DASHBOARD UPDATES
+
+New submissions should become visible in the admin dashboard without requiring a full manual reload.
+
+Prefer a straightforward approach such as:
+- Supabase Realtime subscriptions configured for authorized admin use; or
+- A reasonable polling/revalidation strategy if it is simpler and more secure.
+
+If using Supabase Realtime, configure the required publication and RLS policies. Do not weaken security merely to make subscriptions work.
+
+Update the table and aggregate totals when new enquiries arrive. Clean up subscriptions on unmount.
+
+Do not claim real-time functionality unless it has been implemented and verified.
+
+# 14. ACCESSIBILITY, PERFORMANCE, AND QUALITY
+
+Implement:
+
+- Semantic HTML.
+- Accessible form labels.
+- Keyboard-accessible menus and carousel controls.
+- Visible focus indicators.
+- Meaningful image alt text.
+- Appropriate contrast.
+- Reduced-motion support.
+- Responsive layouts.
+- Optimized images.
+- Correct page metadata.
+- Appropriate loading and error boundaries.
+- No avoidable hydration errors.
+- No obvious browser console errors.
+- No dead buttons or broken navigation.
+- No secrets committed to Git.
+
+Use lightweight animations and avoid unnecessary libraries.
+
+Make the website usable on slower connections and mobile devices.
+
+# 15. ENVIRONMENT VARIABLES
+
+Create a `.env.example` containing the exact variables the application needs, for example:
+
+`NEXT_PUBLIC_SUPABASE_URL=`
+`NEXT_PUBLIC_SUPABASE_ANON_KEY=`
+`SUPABASE_SERVICE_ROLE_KEY=`
+`ADMIN_EMAILS=`
+
+Only include variables that the implemented architecture actually uses. If the current Supabase project uses a publishable key instead of the legacy anonymous key, document the supported configuration.
+
+Keep all privileged keys server-only. Never place a service-role key in a `NEXT_PUBLIC_` variable.
+
+Do not commit `.env.local` or actual credentials.
+
+# 16. README REQUIREMENTS
+
+Write a concise but useful README with these sections:
+
+1. Project overview.
+2. Technology stack.
+3. Key features.
+4. Local installation.
+5. Required environment variables.
+6. Supabase project setup.
+7. SQL migration instructions.
+8. RLS and administrator authorization setup.
+9. Supabase email authentication configuration.
+10. How to create the first admin.
+11. Local development commands.
+12. Testing and build commands.
+13. Vercel deployment instructions.
+14. Known limitations or unfinished work.
+15. What you would add next.
+16. AI tools used and what they were used for.
+
+Be completely honest about AI usage. List only the AI tools actually used, their actual contributions, and the work you personally verified. Do not claim that a tool was used if it was not.
+
+Suggested future improvements:
+- Teacher enquiry email notifications.
+- School-specific trip proposals.
+- Downloadable itinerary PDFs.
+- Multi-admin role management.
+- Better trip capacity planning.
+- More destinations and localization.
+
+Clearly distinguish future ideas from implemented functionality.
+
+# 17. TESTING AND ACCEPTANCE CRITERIA
+
+Do not stop after writing the code.
+
+Run the appropriate checks available in the repository:
+- Install dependencies.
+- Lint the code.
+- Run the production build.
+- Run tests if present.
+- Fix issues discovered by those checks.
+
+Test the following workflows:
+
+1. Homepage renders correctly.
+2. The hero carousel advances every two seconds and supports manual controls.
+3. All three destination pages render their distinct itineraries.
+4. The registration form rejects invalid data.
+5. A valid registration creates an actual Supabase row.
+6. A database failure produces an error rather than a false success.
+7. Anonymous users cannot read submitted enquiries.
+8. An unauthenticated user cannot access admin data.
+9. An authenticated non-admin cannot access admin data.
+10. An authorized admin can view actual enquiries.
+11. Trip filters work.
+12. Per-trip student totals are correct.
+13. Empty database states display correctly.
+14. Logout works.
+15. Mobile layouts work.
+16. Reduced-motion preferences are respected.
+17. The app builds for production.
+
+Use test records only in a separate test environment or clearly isolated test procedure. Do not populate the production database with dummy submissions.
+
+If external credentials are unavailable, complete the implementation and explain which live integration tests require credentials. Do not pretend those tests passed.
+
+# 18. VERCEL DEPLOYMENT
+
+Prepare the project for deployment.
+
+Provide instructions for:
+- Connecting the Git repository to Vercel.
+- Configuring production environment variables.
+- Applying the Supabase migration.
+- Configuring Supabase Auth redirect URLs.
+- Configuring allowed site URLs.
+- Creating an authorized admin.
+- Testing the public registration flow after deployment.
+- Testing admin access and database security.
+
+Deploy only if deployment access and credentials are available. Never claim deployment succeeded unless the deployment actually completed.
+
+# 19. FINAL EXECUTION INSTRUCTIONS
+
+Work in this order:
+
+1. Inspect the repository and existing dependencies.
+2. Establish the architecture and data model.
+3. Implement the database migration and security model.
+4. Implement the public pages and shared components.
+5. Build and verify the destination photography library.
+6. Implement all three destination experiences and their itineraries.
+7. Implement the validated registration flow.
+8. Implement authentication and administrator authorization.
+9. Build the real-data admin dashboard and trip analytics.
+10. Add the animation system and responsive refinements.
+11. Write the README and environment template.
+12. Run lint, production build, and available tests.
+13. Fix discovered issues.
+14. Report implementation status honestly.
+
+Do not replace real database functionality with hardcoded sample submissions.
+
+Do not leave TODOs for core requirements.
+
+Do not claim a feature is complete merely because its UI exists.
+
+At completion, provide:
+- A concise summary of implemented features.
+- The actual project structure.
+- Supabase setup and migration instructions.
+- Environment variables required.
+- Commands executed and their real results.
+- Features verified end-to-end.
+- Any remaining limitations.
+- Deployment status and the next required action.
+
+The final result should be a polished, trustworthy, fully functional educational travel product that a recruiter or product manager can inspect and evaluate confidently.  webiste should use entirely this color or styling in given in image and mainly landing page should be as give n in image exactly designed like that according instructions given and images given
