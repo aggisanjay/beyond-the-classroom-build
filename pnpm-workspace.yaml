@@ -5,4 +5,5 @@ minimumReleaseAgeExclude:
   - next
 
 allowBuilds:
-  unrs-resolver: set this to true or false
+  unrs-resolver: true
+  sharp: true
