@@ -83,11 +83,11 @@ export function SiteHeader() {
           >
             {searchOpen ? <X size={18} /> : <Search size={18} />}
           </button>
-          <Link className="button button--small button--outline header-contact" href="/register">
-            Get in touch
+          <Link className="button button--small button--outline header-plan" href="/register">
+            Plan a Trip
           </Link>
-          <Link className="button button--small button--red header-plan" href="/register">
-            Plan a trip <ArrowRight size={15} aria-hidden="true" />
+          <Link className="button button--small button--red header-contact" href="/register">
+            Get in Touch
           </Link>
           <button
             type="button"

@@ -1,215 +1,385 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import {
   ArrowRight,
-  ArrowUpRight,
-  BookOpen,
+  ChevronRight,
   Compass,
-  GraduationCap,
   Globe2,
+  GraduationCap,
+  Landmark,
   Lightbulb,
+  Plane,
+  Building,
+  Building2,
+  Users,
   ShieldCheck,
-  UsersRound,
+  Star,
+  Sparkles,
 } from "lucide-react"
 import { Reveal } from "@/components/site/motion-reveal"
 import { destinations } from "@/lib/trips/data"
 
-const values = [
-  { icon: Compass, title: "Curated educational itineraries" },
-  { icon: Lightbulb, title: "Real-world learning" },
-  { icon: ShieldCheck, title: "Teacher-led planning" },
-  { icon: Globe2, title: "Global perspectives" },
-  { icon: UsersRound, title: "Student-first experiences" },
+// Section C — Trust and value strip (5 items with vertical divider lines)
+const trustValues = [
+  {
+    icon: GraduationCap,
+    title: "CURATED ITINERARIES",
+    subtitle: "Age-appropriate, educational & safe",
+  },
+  {
+    icon: Users,
+    title: "REAL-WORLD LEARNING",
+    subtitle: "Culture, innovation & global exposure",
+  },
+  {
+    icon: ShieldCheck,
+    title: "SAFE & SUPPORTED",
+    subtitle: "Expert guides & school coordination",
+  },
+  {
+    icon: Globe2,
+    title: "GLOBAL DESTINATIONS",
+    subtitle: "Iconic cities, unique experiences",
+  },
+  {
+    icon: Star,
+    title: "TRUSTED BY SCHOOLS",
+    subtitle: "Memorable, impactful journeys",
+  },
 ]
 
 export function TrustStrip() {
   return (
-    <section className="value-strip" aria-label="Our approach">
-      <div className="value-strip__inner">
-        {values.map(({ icon: Icon, title }, index) => (
-          <Reveal key={title} delay={index * 0.06}>
-            <div className="value-strip__item">
-              <Icon size={18} strokeWidth={1.6} aria-hidden="true" />
-              <span>{title}</span>
+    <section className="value-strip" aria-label="Our core principles">
+      <div className="section-shell">
+        <div className="value-strip__grid">
+          {trustValues.map(({ icon: Icon, title, subtitle }, index) => (
+            <div key={title} className="value-strip__item-wrapper">
+              <Reveal delay={index * 0.08} direction="up" className="w-full">
+                <div className="value-strip__card">
+                  <span className="value-strip__icon-wrap">
+                    <Icon size={22} className="value-strip__icon" />
+                  </span>
+                  <div className="value-strip__text">
+                    <strong>{title}</strong>
+                    <span>{subtitle}</span>
+                  </div>
+                </div>
+              </Reveal>
+              {index < trustValues.length - 1 && (
+                <div className="value-strip__divider" aria-hidden="true" />
+              )}
             </div>
-          </Reveal>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )
+}
+
+// Section D — Featured destinations (Singapore, Jaipur, London with colored badges and adjusted day preview stops)
+const destinationStops: Record<string, { icon: typeof Plane; name: string; day: string }[]> = {
+  "singapore-stem": [
+    { icon: Plane, name: "Visit Science Centre", day: "Day 1" },
+    { icon: Building2, name: "Explore Marina Bay", day: "Day 2" },
+    { icon: Users, name: "Industry Visit", day: "Day 3" },
+  ],
+  "jaipur-heritage": [
+    { icon: Landmark, name: "Amber Fort Tour", day: "Day 1" },
+    { icon: Building, name: "City Palace Visit", day: "Day 2" },
+    { icon: Sparkles, name: "Cultural Workshop", day: "Day 3" },
+  ],
+  "london-universities": [
+    { icon: Building2, name: "University Campus Tour", day: "Day 1" },
+    { icon: Landmark, name: "British Museum", day: "Day 2" },
+    { icon: Users, name: "Student Interaction", day: "Day 3" },
+  ],
+}
+
+const destinationBadges: Record<
+  string,
+  { label: string; icon: typeof Sparkles; badgeClass: string }
+> = {
+  "singapore-stem": {
+    label: "STEM & INNOVATION",
+    icon: Sparkles,
+    badgeClass: "dest-badge--cyan",
+  },
+  "jaipur-heritage": {
+    label: "HISTORY & HERITAGE",
+    icon: Landmark,
+    badgeClass: "dest-badge--amber",
+  },
+  "london-universities": {
+    label: "GLOBAL EDUCATION",
+    icon: GraduationCap,
+    badgeClass: "dest-badge--blue",
+  },
 }
 
 export function FeaturedDestinations() {
   return (
     <section className="section destinations-section" id="destinations">
       <div className="section-shell">
-        <Reveal className="section-heading-row">
-          <div>
+        <div className="destinations-header-row">
+          <Reveal direction="left">
             <p className="eyebrow"><span className="eyebrow__line" /> POPULAR DESTINATIONS</p>
-            <h2>Field trips.<br className="desktop-break" /> Real-world discovery.</h2>
-          </div>
-          <p className="section-heading-copy">
-            Three thoughtfully imagined journeys, each built around a different way of seeing the world.
-          </p>
-        </Reveal>
-
-        <div className="destination-card-grid">
-          {destinations.map((trip, index) => (
-            <Reveal key={trip.slug} delay={index * 0.1}>
-              <Link href={`/trips/${trip.slug}`} className="destination-card">
-                <div className="destination-card__image">
-                  <Image
-                    src={trip.cardImage}
-                    alt={trip.cardAlt}
-                    fill
-                    sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                  />
-                  <span className="destination-card__number">0{index + 1}</span>
-                  <span className="destination-card__duration">Proposed · 3 days</span>
-                </div>
-                <div className="destination-card__body">
-                  <span className="destination-card__theme">{trip.theme}</span>
-                  <div className="destination-card__title-row">
-                    <h3>{trip.city}</h3>
-                    <ArrowUpRight size={19} aria-hidden="true" />
-                  </div>
-                  <p>{trip.summary}</p>
-                  <span className="destination-card__link">Explore journey <ArrowRight size={15} aria-hidden="true" /></span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+            <h2 className="section-title">
+              FIELD TRIPS. <span className="title-highlight">REAL-WORLD DISCOVERY.</span>
+            </h2>
+          </Reveal>
+          <Reveal direction="right" className="destinations-header-right">
+            <p className="destinations-header-copy">
+              From futuristic cities to historic landmarks, our school trips are designed to inspire curiosity, build global perspectives and create lifelong memories.
+            </p>
+            <Link href="/#school-trips" className="button button--small button--outline">
+              VIEW ALL DESTINATIONS <ArrowRight size={14} />
+            </Link>
+          </Reveal>
         </div>
-        <p className="section-footnote">All itineraries are illustrative proposals, not confirmed bookings.</p>
+
+        <div className="destination-cards-grid">
+          {destinations.map((trip, index) => {
+            const badge = destinationBadges[trip.slug] ?? {
+              label: trip.theme,
+              icon: Sparkles,
+              badgeClass: "dest-badge--cyan",
+            }
+            const BadgeIcon = badge.icon
+            const stops = destinationStops[trip.slug] ?? []
+
+            return (
+              <Reveal key={trip.slug} delay={index * 0.12} direction="up">
+                <Link href={`/trips/${trip.slug}`} className="dest-card-interactive">
+                  <div className="dest-card-media">
+                    <Image
+                      src={trip.cardImage}
+                      alt={trip.cardAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="dest-card-image"
+                    />
+                    <div className="dest-card-overlay" />
+                    
+                    {/* Colored Destination Badge */}
+                    <div className={`dest-card-badge ${badge.badgeClass}`}>
+                      <BadgeIcon size={14} />
+                      <span>{badge.label}</span>
+                    </div>
+
+                    {/* Destination Title & Circle Arrow Button */}
+                    <div className="dest-card-bottom-banner">
+                      <div className="dest-card-titles">
+                        <h3>{trip.city.toUpperCase()}</h3>
+                        <span>{trip.shortName === "London" ? "UNIVERSITIES" : trip.shortName === "Singapore" ? "STEM" : "HERITAGE"}</span>
+                      </div>
+                      <div className="dest-card-circle-arrow">
+                        <ChevronRight size={20} />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Day Stops Preview Strip: 3 Clean Columns with Stacked Name & Day */}
+                  <div className="dest-card-stops-strip">
+                    {stops.map((stop, sIdx) => {
+                      const StopIcon = stop.icon
+                      return (
+                        <div key={sIdx} className="dest-card-stop-col">
+                          <div className="stop-header-row">
+                            <StopIcon size={13} className="stop-icon" />
+                            <span className="stop-name" title={stop.name}>
+                              {stop.name}
+                            </span>
+                          </div>
+                          <span className="stop-day">{stop.day}</span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </Link>
+              </Reveal>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
 }
 
+// Section E — Why Educational Travel Matters (Panel 2 in reference image)
 export function LearningStory() {
   return (
-    <section className="section story-section" id="about">
-      <div className="section-shell story-section__grid">
-        <Reveal direction="left" className="story-section__image-wrap">
-          <div className="story-image-frame">
-            <Image
-              src="/images/japan-learning-story.webp"
-              alt="A quiet Japanese temple gate framed by cherry blossoms and a mountain landscape"
-              fill
-              sizes="(max-width: 800px) 100vw, 48vw"
-            />
-            <span className="story-image-caption">A different kind of classroom</span>
+    <section className="section story-banner-section" id="about">
+      <div className="story-banner-container">
+        {/* Full width scenic backdrop */}
+        <div className="story-banner-bg" aria-hidden="true">
+          <Image
+            src="/images/japan-learning-story.webp"
+            alt="Scenic view of Lake Kawaguchi, Torii gate and Mount Fuji"
+            fill
+            sizes="100vw"
+            className="story-bg-img"
+          />
+          <div className="story-banner-gradient" />
+        </div>
+
+        <div className="section-shell story-banner-content">
+          <div className="story-banner-left">
+            <Reveal direction="left">
+              <p className="eyebrow"><span className="eyebrow__line" /> WHY EDUCATIONAL TRAVEL MATTERS</p>
+              <h2 className="story-banner-title">
+                CREATE MEMORIES<br />THAT LAST A<br />LIFETIME
+              </h2>
+              <p className="story-banner-desc">
+                More than just a trip, educational travel is a powerful way to spark curiosity, build global perspectives and prepare students for a brighter future.
+              </p>
+              <Link href="/#destinations" className="button button--red story-cta-btn">
+                DISCOVER EXPERIENCES <ArrowRight size={15} />
+              </Link>
+            </Reveal>
           </div>
-          <span className="story-index">01 / OUTSIDE THE ORDINARY</span>
-        </Reveal>
-        <Reveal direction="right" className="story-section__copy">
-          <p className="eyebrow"><span className="eyebrow__line" /> LEARNING BEYOND TEXTBOOKS</p>
-          <h2>Some lessons<br />need a wider view.</h2>
-          <p className="story-lede">
-            A city can turn a diagram into a system you can walk through. A museum can make history feel close enough to question.
-          </p>
-          <p>
-            Educational travel gives students a shared place to observe, compare and reflect—connecting STEM, culture, university discovery and everyday life to what they are already learning.
-          </p>
-          <div className="story-topic-list">
-            <span><BookOpen size={16} /> History & culture</span>
-            <span><Lightbulb size={16} /> Practical STEM</span>
-            <span><GraduationCap size={16} /> University & careers</span>
+
+          <div className="story-banner-right">
+            {/* Card 1 */}
+            <Reveal direction="right" delay={0.1}>
+              <div className="story-feature-card">
+                <div className="feature-card-media">
+                  <Image
+                    src="/images/trips/singapore/gardens-by-the-bay.webp"
+                    alt="Gardens by the Bay"
+                    fill
+                    sizes="120px"
+                  />
+                </div>
+                <div className="feature-card-body">
+                  <div className="feature-title-row">
+                    <Lightbulb size={18} className="feature-icon" />
+                    <strong>Real-World Learning</strong>
+                  </div>
+                  <p>Turn classroom concepts into hands-on experiences.</p>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Card 2 */}
+            <Reveal direction="right" delay={0.2}>
+              <div className="story-feature-card">
+                <div className="feature-card-media">
+                  <Image
+                    src="/images/trips/jaipur/city-palace.webp"
+                    alt="City Palace Jaipur"
+                    fill
+                    sizes="120px"
+                  />
+                </div>
+                <div className="feature-card-body">
+                  <div className="feature-title-row">
+                    <Landmark size={18} className="feature-icon" />
+                    <strong>Cultural Understanding</strong>
+                  </div>
+                  <p>Explore history, heritage and people beyond textbooks.</p>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Card 3 */}
+            <Reveal direction="right" delay={0.3}>
+              <div className="story-feature-card">
+                <div className="feature-card-media">
+                  <Image
+                    src="/images/trips/london/british-museum.webp"
+                    alt="British Museum London"
+                    fill
+                    sizes="120px"
+                  />
+                </div>
+                <div className="feature-card-body">
+                  <div className="feature-title-row">
+                    <GraduationCap size={18} className="feature-icon" />
+                    <strong>Future-Ready Skills</strong>
+                  </div>
+                  <p>Inspire new perspectives and broader career aspirations.</p>
+                </div>
+              </div>
+            </Reveal>
           </div>
-          <Link className="text-link" href="/#why-us">Why learning travels <ArrowRight size={16} /></Link>
-        </Reveal>
+        </div>
       </div>
     </section>
   )
 }
 
+// Section F — How School Trips Work (Using Kyoto evening street with illuminated pagoda and continuous centered line)
 const processSteps = [
-  { number: "01", title: "Discover a destination", copy: "Explore a proposed itinerary and choose the learning themes that fit your students." },
-  { number: "02", title: "Register your school's interest", copy: "Share a few details so the enquiry can be reviewed by the trip team." },
-  { number: "03", title: "Discuss your next steps", copy: "Talk through group needs, timing and a possible itinerary before making any plans." },
+  {
+    number: "01",
+    title: "Explore Destinations",
+    copy: "Discover curated itineraries designed for student learning.",
+  },
+  {
+    number: "02",
+    title: "Register Interest",
+    copy: "Tell us about your school and preferred trip.",
+  },
+  {
+    number: "03",
+    title: "Discuss & Plan",
+    copy: "Our team will connect with you to share options and next steps.",
+  },
 ]
 
 export function HowItWorks() {
   return (
-    <section className="section process-section" id="how-it-works">
-      <div className="section-shell">
-        <Reveal className="section-heading-row">
-          <div>
-            <p className="eyebrow"><span className="eyebrow__line" /> A CLEAR PLACE TO START</p>
-            <h2>From first idea<br />to a thoughtful plan.</h2>
-          </div>
-          <p className="section-heading-copy">A simple conversation, shaped around your school and the way your students learn.</p>
+    <section className="section how-it-works-banner" id="how-it-works">
+      {/* Background Image: Kyoto historic pagoda evening streetscape matching reference */}
+      <div className="how-it-works-bg" aria-hidden="true">
+        <Image
+          src="/images/kyoto-pagoda-sunset.jpg"
+          alt="Atmospheric Japanese evening streetscape in Kyoto with pagoda and lanterns"
+          fill
+          sizes="100vw"
+          className="how-bg-image"
+          priority
+        />
+        <div className="how-it-works-overlay" />
+      </div>
+
+      <div className="section-shell how-it-works-content">
+        <Reveal direction="up" className="how-it-works-header">
+          <p className="eyebrow"><span className="eyebrow__line" /> HOW SCHOOL TRIPS WORK</p>
+          <h2 className="how-title">A SIMPLE JOURNEY TO GLOBAL DISCOVERY</h2>
+          <p className="how-subtitle">
+            From curiosity to confirmation, we make it easy for schools to plan meaningful international learning experiences.
+          </p>
         </Reveal>
-        <div className="process-grid">
-          {processSteps.map((step, index) => (
-            <Reveal key={step.number} delay={index * 0.1}>
-              <article className="process-step">
-                <span className="process-step__number">{step.number}</span>
-                <span className="process-step__connector" aria-hidden="true" />
+
+        {/* Continuous track connecting all 3 step circles */}
+        <div className="how-steps-track">
+          <div className="how-connecting-bar" aria-hidden="true" />
+          <div className="how-steps-grid">
+            {processSteps.map((step, idx) => (
+              <Reveal key={step.number} delay={idx * 0.15} direction="up" className="how-step-col">
+                <div className="step-circle-badge">
+                  <span>{step.number}</span>
+                </div>
                 <h3>{step.title}</h3>
                 <p>{step.copy}</p>
-              </article>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
-        <p className="section-footnote">Submitting interest is an enquiry only; it does not confirm a place or reservation.</p>
       </div>
     </section>
   )
 }
 
-const reasons = [
-  { icon: BookOpen, title: "Structured learning", copy: "Itineraries start with clear learning themes and room for reflection." },
-  { icon: ShieldCheck, title: "Teacher-first planning", copy: "Group needs, supervision and practical questions belong in the conversation." },
-  { icon: UsersRound, title: "Age-aware experiences", copy: "Activities can be considered in context of student age, interests and access needs." },
-  { icon: Globe2, title: "Cultural perspective", copy: "Make space for local context, respectful questions and more than one point of view." },
-  { icon: Compass, title: "Flexible proposals", copy: "Discuss timing, group size and itinerary priorities before any commitment." },
-  { icon: GraduationCap, title: "Academic connections", copy: "Link place-based learning to subjects, future study and possible careers." },
-]
-
+// Section G & H — Integrated components
 export function WhySchoolsChooseUs() {
-  return (
-    <section className="section why-section" id="why-us">
-      <div className="section-shell">
-        <Reveal className="section-heading-row">
-          <div>
-            <p className="eyebrow"><span className="eyebrow__line" /> THOUGHTFUL BY DESIGN</p>
-            <h2>Made for the way<br />schools really plan.</h2>
-          </div>
-          <p className="section-heading-copy">A strong trip starts with learning goals and honest conversations about what is possible.</p>
-        </Reveal>
-        <div className="reason-grid">
-          {reasons.map(({ icon: Icon, title, copy }, index) => (
-            <Reveal key={title} delay={index * 0.045}>
-              <article className="reason-card">
-                <span className="reason-card__icon"><Icon size={19} strokeWidth={1.7} aria-hidden="true" /></span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+  return null
 }
 
 export function TeacherCta() {
-  return (
-    <section className="teacher-cta" id="school-trips">
-      <div className="teacher-cta__image" aria-hidden="true">
-        <Image src="/images/trips/jaipur/hero.webp" alt="" fill sizes="100vw" />
-      </div>
-      <div className="teacher-cta__overlay" />
-      <Reveal className="teacher-cta__content">
-        <p className="eyebrow"><span className="eyebrow__line" /> FOR TEACHERS & SCHOOLS</p>
-        <h2>Your students&apos; next<br />great lesson starts here.</h2>
-        <p>Tell us about your school and the journey you have in mind.</p>
-        <Link className="button button--red" href="/register">
-          Register school interest <ArrowRight size={16} aria-hidden="true" />
-        </Link>
-        <span className="teacher-cta__note">An enquiry is the beginning of a conversation, not a confirmed reservation.</span>
-      </Reveal>
-    </section>
-  )
+  return null
 }

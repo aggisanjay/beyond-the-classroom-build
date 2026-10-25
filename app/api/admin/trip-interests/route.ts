@@ -9,7 +9,7 @@ import {
   type AdminSortDirection,
 } from "@/lib/admin/data"
 import { createSupabaseAdminClient } from "@/lib/supabase/admin"
-import { isTripSlug } from "@/lib/trips/data"
+import { isTripSlug, type TripSlug } from "@/lib/trips/data"
 
 export const dynamic = "force-dynamic"
 
@@ -37,7 +37,7 @@ function parseFilters(searchParams: URLSearchParams) {
   return {
     page: pageValue,
     pageSize: ADMIN_PAGE_SIZE,
-    tripSlug: requestedTrip ? requestedTrip : undefined,
+    tripSlug: requestedTrip ? (requestedTrip as TripSlug) : undefined,
     search: searchParams.get("search") ?? "",
     sortBy,
     sortDirection,

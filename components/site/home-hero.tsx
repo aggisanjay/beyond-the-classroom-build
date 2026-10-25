@@ -4,8 +4,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import { destinations } from "@/lib/trips/data"
+
+const destinationTaglines: Record<string, string> = {
+  "singapore-stem": "Innovation Meets Learning",
+  "jaipur-heritage": "Heritage Comes Alive",
+  "london-universities": "Global Exposure for Brighter Futures",
+}
 
 export function HomeHero() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -57,12 +63,13 @@ export function HomeHero() {
         if (start - finish > 55) showNext()
       }}
     >
+      {/* Background Image Carousel with smooth crossfade */}
       <div className="home-hero__background" aria-hidden="true">
         <AnimatePresence initial={false} mode="sync">
           <motion.div
             key={activeTrip.slug}
             className="home-hero__image"
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.035 }}
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.85, ease: "easeInOut" }}
@@ -78,119 +85,110 @@ export function HomeHero() {
           </motion.div>
         </AnimatePresence>
         <div className="home-hero__shade" />
-        <div className="home-hero__grain" />
+        <div className="home-hero__vignette" />
       </div>
 
-      <div className="home-hero__content">
+      <div className="home-hero__content-shell">
+        {/* Left Editorial Content */}
         <div className="home-hero__copy">
-          <motion.p
-            className="eyebrow home-hero__eyebrow"
-            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : 0.1 }}
+          <motion.div
+            className="home-hero__tag"
+            initial={reduceMotion ? false : { opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <span className="eyebrow__line" /> CURATED SCHOOL JOURNEYS · 2026
-          </motion.p>
+            <span className="hero-tag-bar" />
+            <span>EDUCATE &nbsp; EXPLORE &nbsp; EXPERIENCE</span>
+          </motion.div>
+
           <motion.h1
-            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            className="home-hero__headline"
+            initial={reduceMotion ? false : { opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.68, delay: reduceMotion ? 0 : 0.18, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            Learning has
-            <br />
-            no borders<span>.</span>
+            LEARNING<br />HAS NO BORDERS
           </motion.h1>
+
           <motion.p
             className="home-hero__description"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : 0.32 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Curated educational journeys that bring learning to life through innovation, culture, and global discovery.
+            Curated international school trips that bring learning to life through culture, innovation and real-world experiences.
           </motion.p>
-          <div className="home-hero__actions">
-            <Link className="button button--red" href="/#destinations">
-              Explore school trips <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-            <Link className="button button--glass" href="/register">
-              Plan your school journey <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
 
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={activeTrip.slug}
-              className="hero-featured-label"
-              aria-live="polite"
-              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 7 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -7 }}
-              transition={{ duration: reduceMotion ? 0 : 0.28 }}
-            >
-              <span>NOW DISCOVERING</span>
-              <strong>{activeTrip.city}</strong>
-              <small>{activeTrip.theme}</small>
-            </motion.div>
-          </AnimatePresence>
+          <motion.div
+            className="home-hero__cta-row"
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.4 }}
+          >
+            <Link className="button button--red hero-primary-cta" href="/#destinations">
+              EXPLORE SCHOOL TRIPS <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </motion.div>
+        </div>
 
-          <div className="hero-carousel-controls" aria-label="Destination carousel controls">
-            <button type="button" className="icon-button hero-arrow" aria-label="Previous destination" onClick={showPrevious}>
-              <ArrowLeft size={17} />
-            </button>
-            <div className="hero-pagination" aria-label="Choose a destination slide">
-              {destinations.map((trip, index) => (
+        {/* Top-Right Destination Badges & Carousel Controls */}
+        <div className="home-hero__right-rail">
+          <div className="hero-dest-tags-list">
+            {destinations.map((trip, idx) => {
+              const isCurrent = activeIndex === idx
+              return (
                 <button
                   key={trip.slug}
                   type="button"
-                  className={`hero-dot${activeIndex === index ? " is-active" : ""}`}
-                  aria-label={`Show ${trip.city} slide`}
-                  aria-current={activeIndex === index ? "true" : undefined}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`hero-dest-pill-card${isCurrent ? " is-active" : ""}`}
+                >
+                  <span className={`dest-pill-bar${isCurrent ? " is-active" : ""}`} />
+                  <div className="dest-pill-info">
+                    <strong className="dest-pill-city">{trip.city.toUpperCase()}</strong>
+                    <span className="dest-pill-theme">
+                      {destinationTaglines[trip.slug] ?? trip.theme}
+                    </span>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Carousel Arrows and Indicator Dots */}
+          <div className="hero-carousel-nav">
+            <div className="hero-dots-row">
+              {destinations.map((trip, idx) => (
+                <button
+                  key={trip.slug}
+                  type="button"
+                  onClick={() => setActiveIndex(idx)}
+                  className={`hero-slider-dot${activeIndex === idx ? " is-active" : ""}`}
+                  aria-label={`Go to slide ${idx + 1}: ${trip.city}`}
                 />
               ))}
             </div>
-            <button type="button" className="icon-button hero-arrow" aria-label="Next destination" onClick={showNext}>
-              <ArrowRight size={17} />
-            </button>
-            <span className="hero-slide-count">0{activeIndex + 1}<i />0{destinations.length}</span>
+            <div className="hero-nav-arrows">
+              <button
+                type="button"
+                onClick={showPrevious}
+                className="hero-arrow-btn"
+                aria-label="Previous destination"
+              >
+                <ChevronLeft size={19} />
+              </button>
+              <button
+                type="button"
+                onClick={showNext}
+                className="hero-arrow-btn"
+                aria-label="Next destination"
+              >
+                <ChevronRight size={19} />
+              </button>
+            </div>
           </div>
-        </div>
-
-        <div className="home-hero__destinations" aria-label="Choose a featured destination">
-          <div className="hero-destination-heading">
-            <span>FIELD NOTES / 0{activeIndex + 1}</span>
-            <span>SELECT A JOURNEY</span>
-          </div>
-          {destinations.map((trip, index) => (
-            <button
-              type="button"
-              key={trip.slug}
-              className={`hero-destination${activeIndex === index ? " hero-destination--active" : ""}`}
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Show ${trip.city}: ${trip.theme}`}
-              aria-pressed={activeIndex === index}
-            >
-              <span className="hero-destination__image">
-                <Image src={trip.cardImage} alt="" fill sizes="(max-width: 768px) 30vw, 250px" />
-              </span>
-              <span className="hero-destination__meta">
-                <small>0{index + 1} / {trip.city.toUpperCase()}</small>
-                <strong>{trip.theme}</strong>
-                <span>Proposed 3-day journey</span>
-              </span>
-              <ArrowUpRight size={17} aria-hidden="true" className="hero-destination__arrow" />
-            </button>
-          ))}
-          <Link className="hero-all-trips" href={`/trips/${activeTrip.slug}`}>
-            Explore {activeTrip.city} <ArrowRight size={15} aria-hidden="true" />
-          </Link>
         </div>
       </div>
-
-      <a className="hero-scroll-cue" href="#destinations" aria-label="Scroll to featured destinations">
-        <span>SCROLL TO DISCOVER</span>
-        <ArrowDown size={14} aria-hidden="true" />
-      </a>
     </section>
   )
 }
