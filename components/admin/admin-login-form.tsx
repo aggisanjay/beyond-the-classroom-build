@@ -36,10 +36,15 @@ export function AdminLoginForm({ initialMessage }: { initialMessage?: string }) 
       if (loginError) throw loginError
       router.replace("/admin")
       router.refresh()
-    } catch {
-      setError(mode === "login"
-        ? "We could not sign you in. Check your email and password, and confirm that the account is on the administrator allowlist."
-        : "We could not start password recovery. Please try again later.")
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : ""
+      if (msg && !msg.toLowerCase().includes("object")) {
+        setError(msg)
+      } else {
+        setError(mode === "login"
+          ? "We could not sign you in. Check your email and password, and confirm that the account is on the administrator allowlist."
+          : "We could not start password recovery. Please try again later.")
+      }
     } finally {
       setBusy(false)
     }
