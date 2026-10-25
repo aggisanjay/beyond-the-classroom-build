@@ -8,8 +8,6 @@ __v0_jsx-dev-runtime.ts
 .vercel/
 
 # Environment variables
-.env
-.env*
 !.env.example
 
 # Common ignores
@@ -18,4 +16,8 @@ node_modules
 out/
 build/
 .DS_Store
-*.log
+*.log
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+config.bat
